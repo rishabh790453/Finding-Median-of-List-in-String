@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+
+class Main {
+   public static void main(String[] args) {
+    String t = "92 87 72 6 5 89 42 57 9";
+    int r =0;
+	
+	  ArrayList<Integer> nums = new ArrayList<Integer>();
+	  ArrayList<Integer> array = new ArrayList<Integer>();
+    nums.add(0);
+	  ArrayList<String> words = new ArrayList<String>();
+    
+     
+	  for(int i =0;i<t.length();i++) {
+		  if(t.substring(i,i+1).equals(" ")) {
+			nums.add(i);
+      
+		}
+	  }
+     
+	  
+    for(int j = 1;j<nums.size();j++){
+      if(j==1){
+        array.add(Integer.parseInt(t.substring(nums.get(j-  
+      1),nums.get(j))));
+      }
+      else{
+        array.add(Integer.parseInt(t.substring(nums.get(j- 1)+1,nums.get(j))));
+      }
+      
+    }
+        
+   array.add(Integer.parseInt(t.substring(nums.get(nums.size()-1)+1,t.length())));
+   
+   for(int i =0;i<array.size();i++){
+     for(int j = i+1;j<array.size();j++){
+       if(array.get(j)<array.get(i)){
+         int temp = array.get(i);
+         array.set(i,array.get(j));
+         array.set(j,temp);
+         
+         
+       }
+     }
+     
+   }
+     
+     System.out.println(array.get(array.size()/2));
+  }
+}
